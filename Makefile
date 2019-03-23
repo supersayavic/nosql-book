@@ -5,7 +5,7 @@ main.pdf: $(patsubst %.md,%.tex,$(wildcard content/*.md))
 
 clean:
 	latexmk -C
-	rm -f main.bbl main.run.xml
+	rm -f main.bbl main.run.xml main.pdf
 	
 	# Remove tex files generated from markdown
 	cd content; find -name "*.md" -exec basename {} .md \; | xargs -i rm -f {}.tex
