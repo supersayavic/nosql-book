@@ -9,11 +9,12 @@ Push access to all branches is disabled and all changes need to be done via a pu
 Getting started:
 
 1. Fork this repository.
-2. Create a file under `content/`. You can use `content/00_test.tex` as a template.
-3. Load this file in `main.tex` (similar to how it's done with `content/00_test`).
-4. Add your content to the created file and bibliographic entries to `bibliography.bib`.
-5. Add new packages to `main.tex` on demand.
-6. Create a pull request for incorporating your changes with the book.
+2. Install Pandoc and LaTeX with all required packages
+3. Create a file under `content/`. You can use `content/00_test.tex` as a template.
+4. Load this file in `main.tex` (similar to how it's done with `content/00_test`).
+5. Add your content to the created file and bibliographic entries to `bibliography.bib`.
+6. Add new packages to `main.tex` on demand.
+7. Create a pull request for incorporating your changes with the book.
 
 Please note that only pull requests which result in the project building
 without errors or warnings will be accepted. To test whether your project will

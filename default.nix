@@ -46,7 +46,6 @@ let
       '';
     };
 
-  mainFile = "main.tex";
   pName = "stgtinf16a-nosql-book";
   pVersion = "0.0.1";
 
@@ -62,29 +61,12 @@ in
       pandoc
     ];
 
-    configurePhase = ''
-      # We could be building from an unclean directory, so remove intermediate files first
-      latexmk -C
-      rm -f "$(basename ${mainFile} .tex).bbl" "$(basename ${mainFile} .tex).run.xml"
-
-      # Remove tex files generated from markdown
-      pushd content
-      find -name "*.md" -exec basename {} .md \; | xargs -i rm -f {}.tex
-      popd
-    '';
-
-    buildPhase = ''
-      # Convert markdown to tex
-      for i in content/*.md; do
-          pandoc "$i" -o "content/$(basename "$i" .md).tex"
-      done
-
-      latexmk -pdflatex="pplatex -c pdflatex --" -pdf -interaction=nonstopmode "${mainFile}" 2>&1 | tee latexmk_log.txt
-    '';
+    # We could be building from an unclean directory, so remove intermediate files first
+    configurePhase = "make clean";
 
     installPhase = ''
       mkdir $out
-      mv "./$(basename ${mainFile} .tex).pdf" $out/
+      mv main.pdf $out/
     '';
 
     doCheck = true;
