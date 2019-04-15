@@ -13,12 +13,14 @@
 \usepackage{suffix}
 \usepackage{lipsum}
 \usepackage{tabularx}
+\usepackage{graphicx}
 
 % Citation packages and options
 \usepackage{csquotes}
 \usepackage[
   backend=biber,
-  style=apa
+  style=numeric,
+  sorting=none
 ]{biblatex}
 \addbibresource{bibliography.bib}
 
@@ -54,7 +56,8 @@
 \maketitle
 \tableofcontents
 
-\input{content/00_test}
+\input{content/key-value-introduction.tex}
+\input{content/hazelcast.tex}
 
 \printbibliography
 
