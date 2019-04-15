@@ -5,15 +5,22 @@
   openany
 ]{scrbook}
 
+\usepackage{scrhack}
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
 
-\usepackage[hidelinks]{hyperref}
+\usepackage[hidelinks, pdfpagelabels]{hyperref}
+\hypersetup{hypertexnames=false}
 \usepackage{enumitem}
 \usepackage{suffix}
 \usepackage{lipsum}
 \usepackage{tabularx}
 \usepackage{graphicx}
+
+% Listings and drawings (needs to be loaded before csquotes)
+\usepackage{minted}
+\usepackage{tikz}
+
 
 % Citation packages and options
 \usepackage{csquotes}
@@ -23,6 +30,10 @@
   sorting=none
 ]{biblatex}
 \addbibresource{bibliography.bib}
+\DeclareLanguageMapping{english}{english-apa}
+
+% Correct listing references
+\providecommand*{\listingautorefname}{Listing}
 
 % ===== INDIVIDUAL AUTHORS PER CHAPTER =====
 % Source: https://tex.stackexchange.com/a/156865
@@ -56,8 +67,12 @@
 \maketitle
 \tableofcontents
 
+
 \input{content/key-value-introduction.tex}
 \input{content/hazelcast.tex}
+\input{content/05_graphdb}
+
+
 
 \printbibliography
 
