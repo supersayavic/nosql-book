@@ -30,9 +30,6 @@ As Hazelcast enables data storage for distributed systems, it may be interesting
 Hazelcast offers a method that should avoid split brain. In the so called "Split Brain Protection" a minimum number of nodes is set on which write or read operations are prevented. If a split brain happens, any sub-clusters that have a lower number of nodes than the minimum number are prevented from accepting write operations. Nevertheless, this method only reduces the time of inconsistency. Therefore it does not completely avoid the inconsistent state of the system \cite{hazelcastCP}.\\
 Recently, the Hazelcast company has announced the ability to provide a solution that supports both PA (availability over consistency) and PC (constistency over availability). This feature should allow the user to adapt more flexibly to the requirements of the application. So far, there are too less resources that can describe this new feature of Hazelcast which is why this paper is currently not able to report about it \cite{hazelcastCAP}.
 
-% Ortega, D. (2019, February 28). What CAP Theorem Means to a Business Leader. Retrieved from  https://hazelcast.com/blog/what-cap-theorem-means-to-a-business-leader/
-
-
 \section{Implementation}
 \subsection*{Getting Started}
 As already mentioned Hazelcast is designed to be easy to use and therefore only require a few steps to set it up running.
@@ -45,7 +42,8 @@ The console application is an easy way to get in touch with Hazelcast and experi
     \caption{Hazelcast Basic Commands \cite{johns2015}}
 \end{figure}
 \end{flushleft}
-When executing the scripts in another window, Hazelcast shows how the new member joins the cluster and displays the two members and there addresses after a short period of time.\\\\
+When executing the scripts in another window, Hazelcast shows how the new member joins the cluster and displays the two members and there addresses after a short period of time.
+
 \begin{flushleft}
 \begin{figure}[ht]
     \includegraphics{content/images/hazelcastMembers.PNG}
@@ -166,10 +164,14 @@ First of all, one of the key characteristics is its simplicity. As mentioned abo
 Furthermore, the cluster is structured as a peer-to-peer network, meaning there is no master-slave relation which is usually common for NoSQL databases. Each node is responsible for the same amount of data. \\
 Another characteristic is the speed of Hazelcast since it relies on in-memory computing \cite{hazelcastmanual}. Knowingly in-memory computing also comes with two main downsides: volatility and scalability. Hazelcast, however addresses these issues. \\
 Volatility is solved by keeping the data of the nodes redundant. This means that Hazelcast stores the data of each node on multiple members. So, if one member fails, there is a backup and the whole cluster can be rebalanced and there is no overall loss of the data. \\
-Scalability is achieved by just adding more nodes to the cluster, the data is then automatically rebalanced and the work load for each member decreases.\\\\
+Scalability is achieved by just adding more nodes to the cluster, the data is then automatically rebalanced and the work load for each member decreases.
+
 These main features of Hazelcast also directly conclude some major advantages. To summarize the already mentioned ones, Hazelcast is very easy and fast to install and it is designed to provide fast computing. Additionally, since there is no master-slave concept, there is also no single point of failure. It is easy to scale either up or down and redundant data storage protects from unexpected data loss \cite{hazelcastnosql}.\\
-Furthermore, in contrast to ordinary key-value databases, Hazelcast is designed for a distributed environment and therefore it is possible to provide an unlimited number of maps and caches per cluster. Another advantage is that Hazelcast can be implemented using multiple threads and thus benefits from all available CPU cores \cite{hazelcastredis}.\\\\
-Nevertheless, Hazelcast relying entirely on in-memory processing still comes with the drawback that this kind of storage is temporary. So, in case there is an overall system shut down the data is lost since the backups are stored in the same cluster. In addition, RAM is usually expensive which should be kept in mind when considering scalability.\\\\
+Furthermore, in contrast to ordinary key-value databases, Hazelcast is designed for a distributed environment and therefore it is possible to provide an unlimited number of maps and caches per cluster. Another advantage is that Hazelcast can be implemented using multiple threads and thus benefits from all available CPU cores \cite{hazelcastredis}.
+
+Nevertheless, Hazelcast relying entirely on in-memory processing still comes with the drawback that this kind of storage is temporary. So, in case there is an overall system shut down the data is lost since the backups are stored in the same cluster. In addition, RAM is usually expensive which should be kept in mind when considering scalability.
+
 Regarding the CAP theorem, as discussed above, Hazelcast can be either implemented as an PA or PC system. When using Hazelcast as a PA system, it is neglecting consistency. Meaning the system is not fully consistent all the time. On the other hand, in case of a PC system, it fails to provide continuous availability.\\
-Furthermore, as a PC system the speed of the data grid system relies on the slowest node. If backups are kept synchronously, data is locked until the consistent state is achieved again. \cite{johns2015} The other nodes will have to wait until this particular block of data is unlocked again.\\\\
+Furthermore, as a PC system the speed of the data grid system relies on the slowest node. If backups are kept synchronously, data is locked until the consistent state is achieved again. \cite{johns2015} The other nodes will have to wait until this particular block of data is unlocked again.
+
 Hazelcast provides several and detailed manuals online as well as understandable tutorials which makes it easy to adapt Hazelcast for own applications. However, scientific research and benchmarking is very limited.
