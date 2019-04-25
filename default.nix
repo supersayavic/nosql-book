@@ -20,6 +20,7 @@ let
       fvextra
       ifplatform
       framed
+      appendix
 
       # Bibliography
       biber
@@ -28,6 +29,16 @@ let
       csquotes
       logreq
       xstring
+
+      # Glossary/Abbreviations
+      tracklang
+      substr
+      datatool
+      xfor
+      mfirstuc
+      glossaries
+      glossaries-extra
+      glossaries-english
       ;
   };
 

@@ -16,6 +16,19 @@
 \usepackage{lipsum}
 \usepackage{tabularx}
 \usepackage{graphicx}
+\usepackage[title,titletoc,header,toc,page]{appendix}
+\renewcommand{\appendixname}{Appendix}
+
+% Layout refinements
+% Also fixes overfull hbox due to texttt
+\usepackage{microtype}
+
+% Abbreviations
+\usepackage{glossaries-extra}
+\setabbreviationstyle{long-short}
+\setabbreviationstyle[acronym]{long-short}
+\makeglossaries
+\input{glossary-entries.tex}
 
 % Listings and drawings (needs to be loaded before csquotes)
 \usepackage{minted}
@@ -68,12 +81,22 @@
 \tableofcontents
 
 
+\printglossaries
+
+\input{content/aa_test}
+
 \input{content/2_0_key_value.tex}
 \input{content/2_1_hazelcast.tex}
-\input{content/05_graphdb}
+\input{content/2_2_redis}
+\input{content/2_3_riak}
+\input{content/5_0_graph_db}
 
 
 
 \printbibliography
+
+\appendix
+\input{appendix/3_1_cassandra}
+
 
 \end{document}
